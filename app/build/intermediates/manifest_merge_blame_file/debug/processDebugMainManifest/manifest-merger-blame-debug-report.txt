@@ -1,0 +1,661 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.bitcoding.bitbrains"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Network calls: register device, report actions, auth/profile/health -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:5:5-67
+12-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:5:22-64
+13
+14    <!-- Android 13+ runtime permission just to show any notification at all -->
+15    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+15-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:8:5-77
+15-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:8:22-74
+16
+17    <!--
+18         Android 14+ full-screen takeover (granted via Settings unless the app is
+19         a recognised calling/alarm app — see util/PermissionHelper.kt)
+20    -->
+21    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+21-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:12:5-81
+21-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:12:22-78
+22
+23    <!-- Sound + vibration for the alert -->
+24    <uses-permission android:name="android.permission.VIBRATE" />
+24-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:15:5-66
+24-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:15:22-63
+25
+26    <!-- Raise the alarm stream to max volume while a Critical alert is sounding -->
+27    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+27-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:18:5-80
+27-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:18:22-77
+28
+29    <!-- Wake the screen when a Critical alert arrives while the phone is locked -->
+30    <uses-permission android:name="android.permission.WAKE_LOCK" />
+30-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:21:5-68
+30-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:21:22-65
+31
+32    <!-- Re-arm the FCM listener after a reboot so alerts survive a restart -->
+33    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+33-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:24:5-81
+33-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:24:22-78
+34
+35    <!--
+36         Lets us prompt the user to exempt the app from battery optimization,
+37         so the background FCM listener isn't killed and delays alerts
+38    -->
+39    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+39-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:28:5-95
+39-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:28:22-92
+40
+41    <!--
+42         "Display over other apps". This is the background-activity-start exemption
+43         that lets the Critical alarm screen launch immediately over ANY foreground
+44         app, on the lock screen, and from a doze/background state — not just as a
+45         demoted heads-up when the screen is already on. Granted via Settings.
+46    -->
+47    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+47-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:34:5-78
+47-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:34:22-75
+48    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+48-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:22:5-79
+48-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:22:22-76
+49    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+49-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:26:5-82
+49-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:26:22-79
+50    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+50-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:26:5-77
+50-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:26:22-74
+51
+52    <permission
+52-->[androidx.core:core:1.13.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+53        android:name="com.bitcoding.bitbrains.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+53-->[androidx.core:core:1.13.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+54        android:protectionLevel="signature" />
+54-->[androidx.core:core:1.13.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+55
+56    <uses-permission android:name="com.bitcoding.bitbrains.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+56-->[androidx.core:core:1.13.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+56-->[androidx.core:core:1.13.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+57
+58    <application
+58-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:36:5-114:19
+59        android:name="com.bitcoding.bitbrains.BitBrainsApp"
+59-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:37:9-37
+60        android:allowBackup="false"
+60-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:38:9-36
+61        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+61-->[androidx.core:core:1.13.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+62        android:debuggable="true"
+63        android:extractNativeLibs="false"
+64        android:icon="@mipmap/ic_launcher"
+64-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:39:9-43
+65        android:label="@string/app_name"
+65-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:40:9-41
+66        android:networkSecurityConfig="@xml/network_security_config"
+66-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:41:9-69
+67        android:supportsRtl="true"
+67-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:43:9-35
+68        android:theme="@style/Theme.TeamsAlert" >
+68-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:42:9-48
+69
+70        <!-- Launcher. Decides between the login screen and the dashboard on start. -->
+71        <activity
+71-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:46:9-54:20
+72            android:name="com.bitcoding.bitbrains.ui.login.LoginActivity"
+72-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:47:13-51
+73            android:exported="true"
+73-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:48:13-36
+74            android:theme="@style/Theme.TeamsAlert" >
+74-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:49:13-52
+75            <intent-filter>
+75-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:50:13-53:29
+76                <action android:name="android.intent.action.MAIN" />
+76-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:51:17-69
+76-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:51:25-66
+77
+78                <category android:name="android.intent.category.LAUNCHER" />
+78-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:52:17-77
+78-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:52:27-74
+79            </intent-filter>
+80        </activity>
+81
+82        <!--
+83             Deep-link target for the Microsoft login redirect:
+84             bitbrains://auth/callback?login=success&token=<JWT>
+85        -->
+86        <activity
+86-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:58:9-69:20
+87            android:name="com.bitcoding.bitbrains.ui.auth.AuthCallbackActivity"
+87-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:59:13-57
+88            android:exported="true"
+88-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:60:13-36
+89            android:launchMode="singleTask"
+89-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:61:13-44
+90            android:theme="@style/Theme.TeamsAlert" >
+90-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:62:13-52
+91            <intent-filter android:autoVerify="false" >
+91-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:63:13-68:29
+91-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:63:28-54
+92                <action android:name="android.intent.action.VIEW" />
+92-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:64:17-69
+92-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:64:25-66
+93
+94                <category android:name="android.intent.category.DEFAULT" />
+94-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:65:17-76
+94-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:65:27-73
+95                <category android:name="android.intent.category.BROWSABLE" />
+95-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:66:17-78
+95-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:66:27-75
+96
+97                <data
+97-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:67:17-72
+98                    android:host="auth"
+98-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:67:50-69
+99                    android:scheme="bitbrains" />
+99-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:67:23-49
+100            </intent-filter>
+101        </activity>
+102
+103        <!-- The dashboard: escalated list, profile, linked banner, refresh. -->
+104        <activity
+104-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:72:9-75:55
+105            android:name="com.bitcoding.bitbrains.ui.home.HomeActivity"
+105-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:73:13-49
+106            android:exported="false"
+106-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:74:13-37
+107            android:theme="@style/Theme.TeamsAlert" />
+107-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:75:13-52
+108
+109        <!-- Debug/settings: /health, /api/devices, last push time. -->
+110        <activity
+110-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:78:9-81:55
+111            android:name="com.bitcoding.bitbrains.ui.settings.DiagnosticsActivity"
+111-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:79:13-60
+112            android:exported="false"
+112-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:80:13-37
+113            android:theme="@style/Theme.TeamsAlert" />
+113-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:81:13-52
+114
+115        <!--
+116             The full-screen alert. Not exported: only this app's own notification
+117             (and its own PendingIntent) is allowed to launch it.
+118        -->
+119        <activity
+119-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:85:9-93:71
+120            android:name="com.bitcoding.bitbrains.ui.alert.FullScreenAlertActivity"
+120-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:86:13-61
+121            android:excludeFromRecents="true"
+121-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:89:13-46
+122            android:exported="false"
+122-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:87:13-37
+123            android:launchMode="singleInstance"
+123-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:88:13-48
+124            android:showOnLockScreen="true"
+124-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:90:13-44
+125            android:showWhenLocked="true"
+125-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:91:13-42
+126            android:theme="@style/Theme.TeamsAlert.FullScreenAlert"
+126-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:93:13-68
+127            android:turnScreenOn="true" />
+127-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:92:13-40
+128
+129        <!-- FCM entry point: receives the data-only pushes in every app state. -->
+130        <service
+130-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:96:9-102:19
+131            android:name="com.bitcoding.bitbrains.push.BitBrainsMessagingService"
+131-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:97:13-59
+132            android:exported="false" >
+132-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:98:13-37
+133            <intent-filter>
+133-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:99:13-101:29
+134                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+134-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:100:17-78
+134-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:100:25-75
+135            </intent-filter>
+136        </service>
+137
+138        <!-- Handles the Read / Ignore buttons on the heads-up notification. -->
+139        <receiver
+139-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:105:9-107:40
+140            android:name="com.bitcoding.bitbrains.push.ActionReceiver"
+140-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:106:13-48
+141            android:exported="false" />
+141-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:107:13-37
+142
+143        <!-- Default channel FCM falls back to if a data message somehow lacks one -->
+144        <meta-data
+144-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:110:9-112:50
+145            android:name="com.google.firebase.messaging.default_notification_channel_id"
+145-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:111:13-89
+146            android:value="critical_alerts_v2" />
+146-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:112:13-47
+147
+148        <service
+148-->[com.google.firebase:firebase-messaging-ktx:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3c686f1f99e6e9b658bf734ffcaaea2e\transformed\firebase-messaging-ktx-24.1.0\AndroidManifest.xml:23:9-29:19
+149            android:name="com.google.firebase.components.ComponentDiscoveryService"
+149-->[com.google.firebase:firebase-messaging-ktx:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3c686f1f99e6e9b658bf734ffcaaea2e\transformed\firebase-messaging-ktx-24.1.0\AndroidManifest.xml:24:13-84
+150            android:directBootAware="true"
+150-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:32:13-43
+151            android:exported="false" >
+151-->[com.google.firebase:firebase-messaging-ktx:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3c686f1f99e6e9b658bf734ffcaaea2e\transformed\firebase-messaging-ktx-24.1.0\AndroidManifest.xml:25:13-37
+152            <meta-data
+152-->[com.google.firebase:firebase-messaging-ktx:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3c686f1f99e6e9b658bf734ffcaaea2e\transformed\firebase-messaging-ktx-24.1.0\AndroidManifest.xml:26:13-28:85
+153                android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingLegacyRegistrar"
+153-->[com.google.firebase:firebase-messaging-ktx:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3c686f1f99e6e9b658bf734ffcaaea2e\transformed\firebase-messaging-ktx-24.1.0\AndroidManifest.xml:27:17-129
+154                android:value="com.google.firebase.components.ComponentRegistrar" />
+154-->[com.google.firebase:firebase-messaging-ktx:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3c686f1f99e6e9b658bf734ffcaaea2e\transformed\firebase-messaging-ktx-24.1.0\AndroidManifest.xml:28:17-82
+155            <meta-data
+155-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:57:13-59:85
+156                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+156-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:58:17-122
+157                android:value="com.google.firebase.components.ComponentRegistrar" />
+157-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:59:17-82
+158            <meta-data
+158-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:60:13-62:85
+159                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+159-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:61:17-119
+160                android:value="com.google.firebase.components.ComponentRegistrar" />
+160-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:62:17-82
+161            <meta-data
+161-->[com.google.firebase:firebase-installations:18.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\723812e206356a8eb1a7f95512a958b6\transformed\firebase-installations-18.0.0\AndroidManifest.xml:15:13-17:85
+162                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+162-->[com.google.firebase:firebase-installations:18.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\723812e206356a8eb1a7f95512a958b6\transformed\firebase-installations-18.0.0\AndroidManifest.xml:16:17-130
+163                android:value="com.google.firebase.components.ComponentRegistrar" />
+163-->[com.google.firebase:firebase-installations:18.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\723812e206356a8eb1a7f95512a958b6\transformed\firebase-installations-18.0.0\AndroidManifest.xml:17:17-82
+164            <meta-data
+164-->[com.google.firebase:firebase-installations:18.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\723812e206356a8eb1a7f95512a958b6\transformed\firebase-installations-18.0.0\AndroidManifest.xml:18:13-20:85
+165                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+165-->[com.google.firebase:firebase-installations:18.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\723812e206356a8eb1a7f95512a958b6\transformed\firebase-installations-18.0.0\AndroidManifest.xml:19:17-127
+166                android:value="com.google.firebase.components.ComponentRegistrar" />
+166-->[com.google.firebase:firebase-installations:18.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\723812e206356a8eb1a7f95512a958b6\transformed\firebase-installations-18.0.0\AndroidManifest.xml:20:17-82
+167            <meta-data
+167-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\15ae95a76428b3af814f97cafbc39987\transformed\firebase-common-ktx-21.0.0\AndroidManifest.xml:12:13-14:85
+168                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+168-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\15ae95a76428b3af814f97cafbc39987\transformed\firebase-common-ktx-21.0.0\AndroidManifest.xml:13:17-116
+169                android:value="com.google.firebase.components.ComponentRegistrar" />
+169-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\15ae95a76428b3af814f97cafbc39987\transformed\firebase-common-ktx-21.0.0\AndroidManifest.xml:14:17-82
+170            <meta-data
+170-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:35:13-37:85
+171                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+171-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:36:17-109
+172                android:value="com.google.firebase.components.ComponentRegistrar" />
+172-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:37:17-82
+173            <meta-data
+173-->[com.google.firebase:firebase-datatransport:18.2.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2dbcfa9cb8c445385cee9f6aa4a0bce9\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:25:13-27:85
+174                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+174-->[com.google.firebase:firebase-datatransport:18.2.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2dbcfa9cb8c445385cee9f6aa4a0bce9\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:26:17-115
+175                android:value="com.google.firebase.components.ComponentRegistrar" />
+175-->[com.google.firebase:firebase-datatransport:18.2.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2dbcfa9cb8c445385cee9f6aa4a0bce9\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:27:17-82
+176        </service>
+177
+178        <receiver
+178-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:29:9-40:20
+179            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+179-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:30:13-78
+180            android:exported="true"
+180-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:31:13-36
+181            android:permission="com.google.android.c2dm.permission.SEND" >
+181-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:32:13-73
+182            <intent-filter>
+182-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:33:13-35:29
+183                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+183-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:34:17-81
+183-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:34:25-78
+184            </intent-filter>
+185
+186            <meta-data
+186-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:37:13-39:40
+187                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+187-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:38:17-92
+188                android:value="true" />
+188-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:39:17-37
+189        </receiver>
+190        <!--
+191             FirebaseMessagingService performs security checks at runtime,
+192             but set to not exported to explicitly avoid allowing another app to call it.
+193        -->
+194        <service
+194-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:46:9-53:19
+195            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+195-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:47:13-82
+196            android:directBootAware="true"
+196-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:48:13-43
+197            android:exported="false" >
+197-->[com.google.firebase:firebase-messaging:24.1.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\AndroidManifest.xml:49:13-37
+198            <intent-filter android:priority="-500" >
+198-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:99:13-101:29
+199                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+199-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:100:17-78
+199-->D:\Mukund\hackathon\TeamsAlertApp\app\src\main\AndroidManifest.xml:100:25-75
+200            </intent-filter>
+201        </service>
+202
+203        <activity
+203-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\787a729f1f7ff9388550e7d13f6a70ee\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+204            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+204-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\787a729f1f7ff9388550e7d13f6a70ee\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+205            android:exported="false"
+205-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\787a729f1f7ff9388550e7d13f6a70ee\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+206            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+206-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\787a729f1f7ff9388550e7d13f6a70ee\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+207
+208        <provider
+208-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:23:9-28:39
+209            android:name="com.google.firebase.provider.FirebaseInitProvider"
+209-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:24:13-77
+210            android:authorities="com.bitcoding.bitbrains.firebaseinitprovider"
+210-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:25:13-72
+211            android:directBootAware="true"
+211-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:26:13-43
+212            android:exported="false"
+212-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:27:13-37
+213            android:initOrder="100" />
+213-->[com.google.firebase:firebase-common:21.0.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\AndroidManifest.xml:28:13-36
+214
+215        <service
+215-->[androidx.room:room-runtime:2.6.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2bb78fcd3cf9fc039c2621475b506f5d\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+216            android:name="androidx.room.MultiInstanceInvalidationService"
+216-->[androidx.room:room-runtime:2.6.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2bb78fcd3cf9fc039c2621475b506f5d\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+217            android:directBootAware="true"
+217-->[androidx.room:room-runtime:2.6.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2bb78fcd3cf9fc039c2621475b506f5d\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+218            android:exported="false" />
+218-->[androidx.room:room-runtime:2.6.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2bb78fcd3cf9fc039c2621475b506f5d\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+219
+220        <provider
+220-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:29:9-37:20
+221            android:name="androidx.startup.InitializationProvider"
+221-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:30:13-67
+222            android:authorities="com.bitcoding.bitbrains.androidx-startup"
+222-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:31:13-68
+223            android:exported="false" >
+223-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:32:13-37
+224            <meta-data
+224-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:34:13-36:52
+225                android:name="androidx.work.WorkManagerInitializer"
+225-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:35:17-68
+226                android:value="androidx.startup" />
+226-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:36:17-49
+227            <meta-data
+227-->[androidx.emoji2:emoji2:1.3.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\588bb4bae317b2e0f10df7bab22be124\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+228                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+228-->[androidx.emoji2:emoji2:1.3.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\588bb4bae317b2e0f10df7bab22be124\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+229                android:value="androidx.startup" />
+229-->[androidx.emoji2:emoji2:1.3.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\588bb4bae317b2e0f10df7bab22be124\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+230            <meta-data
+230-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\c9c2e89749986a2d06e66b7650e4681b\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:29:13-31:52
+231                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+231-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\c9c2e89749986a2d06e66b7650e4681b\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:30:17-78
+232                android:value="androidx.startup" />
+232-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\c9c2e89749986a2d06e66b7650e4681b\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:31:17-49
+233            <meta-data
+233-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+234                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+234-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+235                android:value="androidx.startup" />
+235-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+236        </provider>
+237
+238        <service
+238-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:39:9-45:35
+239            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+239-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:40:13-88
+240            android:directBootAware="false"
+240-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:41:13-44
+241            android:enabled="@bool/enable_system_alarm_service_default"
+241-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:42:13-72
+242            android:exported="false" />
+242-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:43:13-37
+243        <service
+243-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:46:9-52:35
+244            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+244-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:47:13-84
+245            android:directBootAware="false"
+245-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:48:13-44
+246            android:enabled="@bool/enable_system_job_service_default"
+246-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:49:13-70
+247            android:exported="true"
+247-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:50:13-36
+248            android:permission="android.permission.BIND_JOB_SERVICE" />
+248-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:51:13-69
+249        <service
+249-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:53:9-59:35
+250            android:name="androidx.work.impl.foreground.SystemForegroundService"
+250-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:54:13-81
+251            android:directBootAware="false"
+251-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:55:13-44
+252            android:enabled="@bool/enable_system_foreground_service_default"
+252-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:56:13-77
+253            android:exported="false" />
+253-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:57:13-37
+254
+255        <receiver
+255-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:61:9-66:35
+256            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+256-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:62:13-88
+257            android:directBootAware="false"
+257-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:63:13-44
+258            android:enabled="true"
+258-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:64:13-35
+259            android:exported="false" />
+259-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:65:13-37
+260        <receiver
+260-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:67:9-77:20
+261            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+261-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:68:13-106
+262            android:directBootAware="false"
+262-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:69:13-44
+263            android:enabled="false"
+263-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:70:13-36
+264            android:exported="false" >
+264-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:71:13-37
+265            <intent-filter>
+265-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:73:13-76:29
+266                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+266-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:74:17-87
+266-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:74:25-84
+267                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+267-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:75:17-90
+267-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:75:25-87
+268            </intent-filter>
+269        </receiver>
+270        <receiver
+270-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:78:9-88:20
+271            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+271-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:79:13-104
+272            android:directBootAware="false"
+272-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:80:13-44
+273            android:enabled="false"
+273-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:81:13-36
+274            android:exported="false" >
+274-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:82:13-37
+275            <intent-filter>
+275-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:84:13-87:29
+276                <action android:name="android.intent.action.BATTERY_OKAY" />
+276-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:85:17-77
+276-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:85:25-74
+277                <action android:name="android.intent.action.BATTERY_LOW" />
+277-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:86:17-76
+277-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:86:25-73
+278            </intent-filter>
+279        </receiver>
+280        <receiver
+280-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:89:9-99:20
+281            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+281-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:90:13-104
+282            android:directBootAware="false"
+282-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:91:13-44
+283            android:enabled="false"
+283-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:92:13-36
+284            android:exported="false" >
+284-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:93:13-37
+285            <intent-filter>
+285-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:95:13-98:29
+286                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+286-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:96:17-83
+286-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:96:25-80
+287                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+287-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:97:17-82
+287-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:97:25-79
+288            </intent-filter>
+289        </receiver>
+290        <receiver
+290-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:100:9-109:20
+291            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+291-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:101:13-103
+292            android:directBootAware="false"
+292-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:102:13-44
+293            android:enabled="false"
+293-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:103:13-36
+294            android:exported="false" >
+294-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:104:13-37
+295            <intent-filter>
+295-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:106:13-108:29
+296                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+296-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:107:17-79
+296-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:107:25-76
+297            </intent-filter>
+298        </receiver>
+299        <receiver
+299-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:110:9-121:20
+300            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+300-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:111:13-88
+301            android:directBootAware="false"
+301-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:112:13-44
+302            android:enabled="false"
+302-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:113:13-36
+303            android:exported="false" >
+303-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:114:13-37
+304            <intent-filter>
+304-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:116:13-120:29
+305                <action android:name="android.intent.action.BOOT_COMPLETED" />
+305-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:117:17-79
+305-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:117:25-76
+306                <action android:name="android.intent.action.TIME_SET" />
+306-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:118:17-73
+306-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:118:25-70
+307                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+307-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:119:17-81
+307-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:119:25-78
+308            </intent-filter>
+309        </receiver>
+310        <receiver
+310-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:122:9-131:20
+311            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+311-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:123:13-99
+312            android:directBootAware="false"
+312-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:124:13-44
+313            android:enabled="@bool/enable_system_alarm_service_default"
+313-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:125:13-72
+314            android:exported="false" >
+314-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:126:13-37
+315            <intent-filter>
+315-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:128:13-130:29
+316                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+316-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:129:17-98
+316-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:129:25-95
+317            </intent-filter>
+318        </receiver>
+319        <receiver
+319-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:132:9-142:20
+320            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+320-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:133:13-78
+321            android:directBootAware="false"
+321-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:134:13-44
+322            android:enabled="true"
+322-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:135:13-35
+323            android:exported="true"
+323-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:136:13-36
+324            android:permission="android.permission.DUMP" >
+324-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:137:13-57
+325            <intent-filter>
+325-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:139:13-141:29
+326                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+326-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:140:17-88
+326-->[androidx.work:work-runtime:2.9.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\AndroidManifest.xml:140:25-85
+327            </intent-filter>
+328        </receiver>
+329
+330        <meta-data
+330-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\0118ad5d636cd55b9dca0ffb1af5fa3a\transformed\play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+331            android:name="com.google.android.gms.version"
+331-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\0118ad5d636cd55b9dca0ffb1af5fa3a\transformed\play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+332            android:value="@integer/google_play_services_version" />
+332-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\0118ad5d636cd55b9dca0ffb1af5fa3a\transformed\play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+333
+334        <receiver
+334-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+335            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+335-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+336            android:directBootAware="false"
+336-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+337            android:enabled="true"
+337-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+338            android:exported="true"
+338-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+339            android:permission="android.permission.DUMP" >
+339-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+340            <intent-filter>
+340-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+341                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+341-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+341-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+342            </intent-filter>
+343            <intent-filter>
+343-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+344                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+344-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+344-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+345            </intent-filter>
+346            <intent-filter>
+346-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+347                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+347-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+347-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+348            </intent-filter>
+349            <intent-filter>
+349-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+350                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+350-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+350-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+351            </intent-filter>
+352        </receiver>
+353
+354        <service
+354-->[com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3e0686745a1a4c84b9b3d53ff9052617\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:28:9-34:19
+355            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+355-->[com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3e0686745a1a4c84b9b3d53ff9052617\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:29:13-103
+356            android:exported="false" >
+356-->[com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3e0686745a1a4c84b9b3d53ff9052617\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:30:13-37
+357            <meta-data
+357-->[com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3e0686745a1a4c84b9b3d53ff9052617\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:31:13-33:39
+358                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+358-->[com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3e0686745a1a4c84b9b3d53ff9052617\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:32:17-94
+359                android:value="cct" />
+359-->[com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3e0686745a1a4c84b9b3d53ff9052617\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:33:17-36
+360        </service>
+361        <service
+361-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:26:9-30:19
+362            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+362-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:27:13-117
+363            android:exported="false"
+363-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:28:13-37
+364            android:permission="android.permission.BIND_JOB_SERVICE" >
+364-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:29:13-69
+365        </service>
+366
+367        <receiver
+367-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:32:9-34:40
+368            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+368-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:33:13-132
+369            android:exported="false" />
+369-->[com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ccc7690ccc9ce152108a2a953eea30b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:34:13-37
+370    </application>
+371
+372</manifest>

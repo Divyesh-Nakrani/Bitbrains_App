@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "com.bitcoding.bitbrains.app-debug-50:/drawable_ic_overlay.xml.flat",
+        "source": "com.bitcoding.bitbrains.app-main-52:/drawable/ic_overlay.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\xml\\network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_fullscreen.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_fullscreen.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_shield_check.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_shield_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_notifications.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\layout_activity_diagnostics.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_diagnostics.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_battery.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_battery.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\layout_activity_full_screen_alert.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_full_screen_alert.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_check.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_alert.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_alert.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_ic_microsoft.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\ic_microsoft.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_bg_icon_circle.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\bg_icon_circle.xml"
+    },
+    {
+        "merged": "com.bitcoding.bitbrains.app-debug-50:/layout_activity_home.xml.flat",
+        "source": "com.bitcoding.bitbrains.app-main-52:/layout/activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-debug-50:\\drawable_bg_pill.xml.flat",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\drawable\\bg_pill.xml"
+    }
+]

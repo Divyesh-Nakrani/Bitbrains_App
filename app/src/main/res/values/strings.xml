@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Teams Critical Alert</string>
+
+    <!-- Permission gate -->
+    <string name="setup_title">Set up alerts</string>
+    <string name="setup_subtitle">Grant these permissions so critical alerts can reach you — even when your phone is locked.</string>
+    <string name="perm_notifications_title">Notifications</string>
+    <string name="perm_notifications_desc">Lets the app show alerts on your device.</string>
+    <string name="perm_fullscreen_title">Full-screen alerts</string>
+    <string name="perm_fullscreen_desc">Lets an alert take over the screen like an incoming call.</string>
+    <string name="perm_battery_title">Unrestricted background</string>
+    <string name="perm_battery_desc">Stops the system from delaying alerts to save battery.</string>
+    <string name="action_allow">Allow</string>
+    <string name="action_open_settings">Open settings</string>
+    <string name="status_allowed">Allowed</string>
+    <string name="gate_continue">Continue</string>
+    <string name="gate_hint_blocked">Grant all permissions to continue</string>
+    <string name="gate_hint_ready">You\'re all set — tap Continue</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_subtitle">Critical alert receiver</string>
+    <string name="protection_active_title">Protection active</string>
+    <string name="protection_active_sub">You\'ll receive critical alerts on this device.</string>
+    <string name="protection_setup_title">Finish setup</string>
+    <string name="protection_setup_sub">Register this device to start receiving alerts.</string>
+    <string name="protection_perms_title">Action needed</string>
+    <string name="protection_perms_sub">Some permissions are off — alerts may not reach you.</string>
+    <string name="registration_title">Device registration</string>
+    <string name="employee_id_hint">Employee ID</string>
+    <string name="register_cta">Register this device</string>
+    <string name="reregister_cta">Update registration</string>
+    <string name="manage_permissions">Manage alert permissions</string>
+</resources>

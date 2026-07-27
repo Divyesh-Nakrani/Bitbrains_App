@@ -1,0 +1,53 @@
+com.bitcoding.bitbrains.app-play-services-basement-18.3.0-0 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\0118ad5d636cd55b9dca0ffb1af5fa3a\transformed\play-services-basement-18.3.0\res
+com.bitcoding.bitbrains.app-lifecycle-viewmodel-ktx-2.8.4-1 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\0616fb012e729268a14e0a8d6b9fb494\transformed\lifecycle-viewmodel-ktx-2.8.4\res
+com.bitcoding.bitbrains.app-lifecycle-runtime-ktx-release-2 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\0ca2538e34fab3faadcf43ccde90c88c\transformed\lifecycle-runtime-ktx-release\res
+com.bitcoding.bitbrains.app-lifecycle-runtime-release-3 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\12ef992fc23e70e99c7661567927d2b0\transformed\lifecycle-runtime-release\res
+com.bitcoding.bitbrains.app-sqlite-2.4.0-4 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\244c184ca733ccb8111d277f071cf04e\transformed\sqlite-2.4.0\res
+com.bitcoding.bitbrains.app-startup-runtime-1.1.1-5 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2925951fcbeb2d6d6e327ad209e3207c\transformed\startup-runtime-1.1.1\res
+com.bitcoding.bitbrains.app-room-runtime-2.6.1-6 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\2bb78fcd3cf9fc039c2621475b506f5d\transformed\room-runtime-2.6.1\res
+com.bitcoding.bitbrains.app-emoji2-views-helper-1.3.0-7 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\32c029878f2b211694518bff05f1e37d\transformed\emoji2-views-helper-1.3.0\res
+com.bitcoding.bitbrains.app-viewpager2-1.0.0-8 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\365e8ac3549047f53fc00daafe18bfa3\transformed\viewpager2-1.0.0\res
+com.bitcoding.bitbrains.app-profileinstaller-1.3.1-9 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3cec9128f6668e026bcfcf3edc14a23c\transformed\profileinstaller-1.3.1\res
+com.bitcoding.bitbrains.app-fragment-1.5.4-10 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\3eac2e539964fe6aac059b6ad94da104\transformed\fragment-1.5.4\res
+com.bitcoding.bitbrains.app-sqlite-framework-2.4.0-11 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\47f1d1eb2844ce244711cf1ec13ecfad\transformed\sqlite-framework-2.4.0\res
+com.bitcoding.bitbrains.app-emoji2-1.3.0-12 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\588bb4bae317b2e0f10df7bab22be124\transformed\emoji2-1.3.0\res
+com.bitcoding.bitbrains.app-annotation-experimental-1.4.0-13 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\5fe7ca376553b8afceca130d56ac643e\transformed\annotation-experimental-1.4.0\res
+com.bitcoding.bitbrains.app-work-runtime-ktx-2.9.1-14 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\68729a74bef1c5812881066be3a93035\transformed\work-runtime-ktx-2.9.1\res
+com.bitcoding.bitbrains.app-activity-ktx-1.9.1-15 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6a12f8afc77b2feb9b111824ca03a5cc\transformed\activity-ktx-1.9.1\res
+com.bitcoding.bitbrains.app-core-1.13.1-16 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\6b6795e99a37e21d79d71597b2f8c86c\transformed\core-1.13.1\res
+com.bitcoding.bitbrains.app-cardview-1.0.0-17 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\763ff4344168c5f792b1bb1ed45cf694\transformed\cardview-1.0.0\res
+com.bitcoding.bitbrains.app-play-services-base-18.0.1-18 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\787a729f1f7ff9388550e7d13f6a70ee\transformed\play-services-base-18.0.1\res
+com.bitcoding.bitbrains.app-core-ktx-1.13.1-19 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\7b902771ac3e83ff0b565475c6b63dca\transformed\core-ktx-1.13.1\res
+com.bitcoding.bitbrains.app-coordinatorlayout-1.1.0-20 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8ce8490f777e5e2c3e7e26efa34d95b5\transformed\coordinatorlayout-1.1.0\res
+com.bitcoding.bitbrains.app-browser-1.8.0-21 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8dab9fd0bda1890091230da52eb7bd9d\transformed\browser-1.8.0\res
+com.bitcoding.bitbrains.app-firebase-common-21.0.0-22 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\8e07fdd27f6f91c9b27cc528ade4ecc0\transformed\firebase-common-21.0.0\res
+com.bitcoding.bitbrains.app-appcompat-1.7.0-23 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\9172f414557b11e3a8c6787229def568\transformed\appcompat-1.7.0\res
+com.bitcoding.bitbrains.app-lifecycle-livedata-2.8.4-24 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\924a3a034fdc66613938795525f81b50\transformed\lifecycle-livedata-2.8.4\res
+com.bitcoding.bitbrains.app-lifecycle-service-2.8.4-25 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\9965d263bef8297890b8049644a37042\transformed\lifecycle-service-2.8.4\res
+com.bitcoding.bitbrains.app-room-ktx-2.6.1-26 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\9c409c6503563c9c96e11da18f010c20\transformed\room-ktx-2.6.1\res
+com.bitcoding.bitbrains.app-recyclerview-1.1.0-27 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\9ecffbd218f7ab8bc51a5c2569419207\transformed\recyclerview-1.1.0\res
+com.bitcoding.bitbrains.app-material-1.12.0-28 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\a08c7cf7260050ee51c810584f0eb4e3\transformed\material-1.12.0\res
+com.bitcoding.bitbrains.app-core-runtime-2.2.0-29 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\af0f0e1da896431c3d3a502886f01719\transformed\core-runtime-2.2.0\res
+com.bitcoding.bitbrains.app-firebase-messaging-24.1.0-30 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b89d636bf480c9d3274ff3934852f60e\transformed\firebase-messaging-24.1.0\res
+com.bitcoding.bitbrains.app-lifecycle-livedata-core-2.8.4-31 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\b9a2b57e7c68fb105574c57bc2074a1e\transformed\lifecycle-livedata-core-2.8.4\res
+com.bitcoding.bitbrains.app-lifecycle-viewmodel-release-32 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\bffe3b1da568fef4e6d7f34914bc7565\transformed\lifecycle-viewmodel-release\res
+com.bitcoding.bitbrains.app-lifecycle-process-2.8.4-33 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\c9c2e89749986a2d06e66b7650e4681b\transformed\lifecycle-process-2.8.4\res
+com.bitcoding.bitbrains.app-constraintlayout-2.1.4-34 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\cf3f0271c6ecd50db5cad7311d09d322\transformed\constraintlayout-2.1.4\res
+com.bitcoding.bitbrains.app-work-runtime-2.9.1-35 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d0dacb3f261a44befc280e4a7da64fc7\transformed\work-runtime-2.9.1\res
+com.bitcoding.bitbrains.app-appcompat-resources-1.7.0-36 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\d692eb2bf72199ce211b20e01fc26258\transformed\appcompat-resources-1.7.0\res
+com.bitcoding.bitbrains.app-activity-1.9.1-37 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\dc87d3b5db423087fc21c1c594c68357\transformed\activity-1.9.1\res
+com.bitcoding.bitbrains.app-lifecycle-viewmodel-savedstate-2.8.4-38 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\de1baec897f973bd41b7e53ff407a146\transformed\lifecycle-viewmodel-savedstate-2.8.4\res
+com.bitcoding.bitbrains.app-savedstate-ktx-1.2.1-39 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\e22d989263cc77f09c87c1536b11846d\transformed\savedstate-ktx-1.2.1\res
+com.bitcoding.bitbrains.app-security-crypto-1.1.0-alpha06-40 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\e6ab2200572c3700327e736dd25576dc\transformed\security-crypto-1.1.0-alpha06\res
+com.bitcoding.bitbrains.app-lifecycle-livedata-core-ktx-2.8.4-41 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\edefdc65f79c3f8b941496a5ae66ad71\transformed\lifecycle-livedata-core-ktx-2.8.4\res
+com.bitcoding.bitbrains.app-drawerlayout-1.1.1-42 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\f05bc461b6185a07d06ced0559b7e329\transformed\drawerlayout-1.1.1\res
+com.bitcoding.bitbrains.app-transition-1.5.0-43 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\f3b8dc361c3662326c1cdbef26973d3f\transformed\transition-1.5.0\res
+com.bitcoding.bitbrains.app-savedstate-1.2.1-44 C:\Users\BitCoding Solutions\.gradle\caches\8.9\transforms\f808d8a914e9a58ff4be7632b72b16a5\transformed\savedstate-1.2.1\res
+com.bitcoding.bitbrains.app-pngs-45 D:\Mukund\hackathon\TeamsAlertApp\app\build\generated\res\pngs\debug
+com.bitcoding.bitbrains.app-res-46 D:\Mukund\hackathon\TeamsAlertApp\app\build\generated\res\processDebugGoogleServices
+com.bitcoding.bitbrains.app-resValues-47 D:\Mukund\hackathon\TeamsAlertApp\app\build\generated\res\resValues\debug
+com.bitcoding.bitbrains.app-packageDebugResources-48 D:\Mukund\hackathon\TeamsAlertApp\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.bitcoding.bitbrains.app-packageDebugResources-49 D:\Mukund\hackathon\TeamsAlertApp\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.bitcoding.bitbrains.app-debug-50 D:\Mukund\hackathon\TeamsAlertApp\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.bitcoding.bitbrains.app-debug-51 D:\Mukund\hackathon\TeamsAlertApp\app\src\debug\res
+com.bitcoding.bitbrains.app-main-52 D:\Mukund\hackathon\TeamsAlertApp\app\src\main\res

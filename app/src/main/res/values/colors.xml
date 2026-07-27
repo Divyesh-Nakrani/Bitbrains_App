@@ -1,0 +1,29 @@
+<resources>
+    <!-- Brand -->
+    <color name="brand_primary">#2E5C8A</color>
+    <color name="brand_primary_dark">#234869</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="brand_primary_container">#DBE9F7</color>
+    <color name="on_primary_container">#12395C</color>
+
+    <!-- Surfaces / text -->
+    <color name="bg">#F3F6FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#EDF2F8</color>
+    <color name="on_surface">#18222E</color>
+    <color name="muted">#5C6B7A</color>
+    <color name="outline">#E1E7EF</color>
+
+    <!-- Semantic -->
+    <color name="success">#1E874B</color>
+    <color name="success_container">#DAF2E3</color>
+    <color name="warning">#B0690A</color>
+    <color name="warning_container">#FAECD3</color>
+    <color name="danger">#C43D3D</color>
+    <color name="danger_container">#F9E1E1</color>
+
+    <!-- Legacy (kept for launcher icon + full-screen alert) -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="purple_primary">#2E5C8A</color>
+</resources>

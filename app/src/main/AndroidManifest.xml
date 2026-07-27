@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Network calls: register device, report actions, auth/profile/health -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Android 13+ runtime permission just to show any notification at all -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Android 14+ full-screen takeover (granted via Settings unless the app is
+         a recognised calling/alarm app — see util/PermissionHelper.kt) -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <!-- Sound + vibration for the alert -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Raise the alarm stream to max volume while a Critical alert is sounding -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- Wake the screen when a Critical alert arrives while the phone is locked -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Re-arm the FCM listener after a reboot so alerts survive a restart -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Lets us prompt the user to exempt the app from battery optimization,
+         so the background FCM listener isn't killed and delays alerts -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- "Display over other apps". This is the background-activity-start exemption
+         that lets the Critical alarm screen launch immediately over ANY foreground
+         app, on the lock screen, and from a doze/background state — not just as a
+         demoted heads-up when the screen is already on. Granted via Settings. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".BitBrainsApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/Theme.TeamsAlert"
+        android:supportsRtl="true">
+
+        <!-- Launcher. Decides between the login screen and the dashboard on start. -->
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TeamsAlert">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Deep-link target for the Microsoft login redirect:
+             bitbrains://auth/callback?login=success&token=<JWT> -->
+        <activity
+            android:name=".ui.auth.AuthCallbackActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.TeamsAlert">
+            <intent-filter android:autoVerify="false">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="bitbrains" android:host="auth" />
+            </intent-filter>
+        </activity>
+
+        <!-- The dashboard: escalated list, profile, linked banner, refresh. -->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TeamsAlert" />
+
+        <!-- Debug/settings: /health, /api/devices, last push time. -->
+        <activity
+            android:name=".ui.settings.DiagnosticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TeamsAlert" />
+
+        <!-- The full-screen alert. Not exported: only this app's own notification
+             (and its own PendingIntent) is allowed to launch it. -->
+        <activity
+            android:name=".ui.alert.FullScreenAlertActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:theme="@style/Theme.TeamsAlert.FullScreenAlert" />
+
+        <!-- FCM entry point: receives the data-only pushes in every app state. -->
+        <service
+            android:name=".push.BitBrainsMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Handles the Read / Ignore buttons on the heads-up notification. -->
+        <receiver
+            android:name=".push.ActionReceiver"
+            android:exported="false" />
+
+        <!-- Default channel FCM falls back to if a data message somehow lacks one -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="critical_alerts_v2" />
+
+    </application>
+</manifest>

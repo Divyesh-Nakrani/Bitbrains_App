@@ -1,0 +1,24 @@
+<resources>
+    <!-- Brand -->
+    <color name="brand_primary">#5FA0DA</color>
+    <color name="brand_primary_dark">#3E7CB8</color>
+    <color name="on_primary">#0A1622</color>
+    <color name="brand_primary_container">#1E384F</color>
+    <color name="on_primary_container">#CFE4F7</color>
+
+    <!-- Surfaces / text -->
+    <color name="bg">#0E141B</color>
+    <color name="surface">#161F29</color>
+    <color name="surface_variant">#1E2A36</color>
+    <color name="on_surface">#E6EDF4</color>
+    <color name="muted">#93A2B2</color>
+    <color name="outline">#28343F</color>
+
+    <!-- Semantic -->
+    <color name="success">#4EC38A</color>
+    <color name="success_container">#12331F</color>
+    <color name="warning">#E0A34A</color>
+    <color name="warning_container">#38290F</color>
+    <color name="danger">#E77E7E</color>
+    <color name="danger_container">#3A1D1D</color>
+</resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#F3F6FA</color>
+    <color name="black">#000000</color>
+    <color name="brand_primary">#2E5C8A</color>
+    <color name="brand_primary_container">#DBE9F7</color>
+    <color name="brand_primary_dark">#234869</color>
+    <color name="danger">#C43D3D</color>
+    <color name="danger_container">#F9E1E1</color>
+    <color name="muted">#5C6B7A</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#12395C</color>
+    <color name="on_surface">#18222E</color>
+    <color name="outline">#E1E7EF</color>
+    <color name="purple_primary">#2E5C8A</color>
+    <color name="success">#1E874B</color>
+    <color name="success_container">#DAF2E3</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#EDF2F8</color>
+    <color name="warning">#B0690A</color>
+    <color name="warning_container">#FAECD3</color>
+    <color name="white">#FFFFFF</color>
+    <string name="action_allow">Allow</string>
+    <string name="action_open_settings">Open settings</string>
+    <string name="app_name">Teams Critical Alert</string>
+    <string name="dashboard_subtitle">Critical alert receiver</string>
+    <string name="employee_id_hint">Employee ID</string>
+    <string name="gate_continue">Continue</string>
+    <string name="gate_hint_blocked">Grant all permissions to continue</string>
+    <string name="gate_hint_ready">You\'re all set — tap Continue</string>
+    <string name="gcm_defaultSenderId" translatable="false">55325740421</string>
+    <string name="google_api_key" translatable="false">AIzaSyAlqr-RDeuJ436SbqFkWssTGU0-n9LwW7s</string>
+    <string name="google_app_id" translatable="false">1:55325740421:android:5eb603f65610da0d1fc8ec</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAlqr-RDeuJ436SbqFkWssTGU0-n9LwW7s</string>
+    <string name="google_storage_bucket" translatable="false">bir-brains.firebasestorage.app</string>
+    <string name="manage_permissions">Manage alert permissions</string>
+    <string name="perm_battery_desc">Stops the system from delaying alerts to save battery.</string>
+    <string name="perm_battery_title">Unrestricted background</string>
+    <string name="perm_fullscreen_desc">Lets an alert take over the screen like an incoming call.</string>
+    <string name="perm_fullscreen_title">Full-screen alerts</string>
+    <string name="perm_notifications_desc">Lets the app show alerts on your device.</string>
+    <string name="perm_notifications_title">Notifications</string>
+    <string name="project_id" translatable="false">bir-brains</string>
+    <string name="protection_active_sub">You\'ll receive critical alerts on this device.</string>
+    <string name="protection_active_title">Protection active</string>
+    <string name="protection_perms_sub">Some permissions are off — alerts may not reach you.</string>
+    <string name="protection_perms_title">Action needed</string>
+    <string name="protection_setup_sub">Register this device to start receiving alerts.</string>
+    <string name="protection_setup_title">Finish setup</string>
+    <string name="register_cta">Register this device</string>
+    <string name="registration_title">Device registration</string>
+    <string name="reregister_cta">Update registration</string>
+    <string name="setup_subtitle">Grant these permissions so critical alerts can reach you — even when your phone is locked.</string>
+    <string name="setup_title">Set up alerts</string>
+    <string name="status_allowed">Allowed</string>
+    <style name="Theme.TeamsAlert" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/brand_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+    </style>
+    <style name="Theme.TeamsAlert.FullScreenAlert" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+</resources>

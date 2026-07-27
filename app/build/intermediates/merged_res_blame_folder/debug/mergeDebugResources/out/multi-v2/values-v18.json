@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.bitcoding.bitbrains.app-mergeDebugResources-48:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\BitCoding Solutions\\.gradle\\caches\\8.9\\transforms\\9172f414557b11e3a8c6787229def568\\transformed\\appcompat-1.7.0\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

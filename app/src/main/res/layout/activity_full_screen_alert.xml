@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0E1420"
+    android:padding="32dp"
+    android:gravity="center">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="@drawable/bg_icon_circle"
+        android:backgroundTint="#33FF5A5A"
+        android:padding="26dp"
+        android:src="@drawable/ic_alert"
+        app:tint="#FF6B6B"
+        android:contentDescription="Alert" />
+
+    <TextView
+        android:id="@+id/textPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="6dp"
+        android:background="@drawable/bg_pill"
+        android:backgroundTint="#33FF5A5A"
+        android:textColor="#FF8A8A"
+        android:textStyle="bold"
+        android:letterSpacing="0.12"
+        android:textSize="13sp"
+        tools:text="CRITICAL" />
+
+    <TextView
+        android:id="@+id/textSender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        tools:text="Jordan (Acme Corp)" />
+
+    <TextView
+        android:id="@+id/textMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textColor="#C7D0DC"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        tools:text="Can you approve the deployment before 5 PM today? This is blocking the release." />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMarkRead"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="Mark as read"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        app:cornerRadius="16dp"
+        app:backgroundTint="#22A06B"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonIgnore"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Ignore"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        app:cornerRadius="16dp"
+        android:textColor="#8A96A6" />
+
+</LinearLayout>

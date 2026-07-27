@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">55325740421</string>
+    <string name="google_api_key" translatable="false">AIzaSyAlqr-RDeuJ436SbqFkWssTGU0-n9LwW7s</string>
+    <string name="google_app_id" translatable="false">1:55325740421:android:5eb603f65610da0d1fc8ec</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAlqr-RDeuJ436SbqFkWssTGU0-n9LwW7s</string>
+    <string name="google_storage_bucket" translatable="false">bir-brains.firebasestorage.app</string>
+    <string name="project_id" translatable="false">bir-brains</string>
+</resources>

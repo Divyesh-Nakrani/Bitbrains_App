@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-mergeDebugResources-49:\\layout\\activity_full_screen_alert.xml",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_full_screen_alert.xml"
+    },
+    {
+        "merged": "com.bitcoding.bitbrains.app-mergeDebugResources-49:/layout/activity_home.xml",
+        "source": "com.bitcoding.bitbrains.app-main-52:/layout/activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-mergeDebugResources-49:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-mergeDebugResources-49:\\layout\\activity_home.xml",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-mergeDebugResources-49:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-mergeDebugResources-49:\\layout\\activity_diagnostics.xml",
+        "source": "C:\\Users\\BitCoding Solutions\\.gradle\\daemon\\8.9\\com.bitcoding.bitbrains.app-main-52:\\layout\\activity_diagnostics.xml"
+    }
+]
